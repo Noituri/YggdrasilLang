@@ -1,0 +1,11 @@
+@fc printf(x String, y String) Int {
+
+}
+
+fc sum(x Int, y Int) Int {
+    return x + y
+}
+
+fc main {
+    write(sum(2, 3))
+}
