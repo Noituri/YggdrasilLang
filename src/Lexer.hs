@@ -3,7 +3,7 @@ module Lexer where
 import Text.Parsec.String (Parser)
 import Text.Parsec.Language (emptyDef)
 import qualified Text.Parsec.Token as Tok
-
+-- TODO: Use Megaparsec instead of parsec
 lexer :: Tok.TokenParser ()
 lexer = Tok.makeTokenParser emptyDef {
       Tok.commentLine = "//"
