@@ -1,12 +1,16 @@
 module ASTree where
 
+type Name = String
+
 data AST
     = Float Double
     | Int Integer
+    | String String
+    | Bool Bool
     | Function String [AST] AST
     | ExternFunc String [AST]
     | Call String [AST]
-    | Var String
+    | Var Name
     | BinOp Operator AST AST
     deriving (Eq, Ord, Show)
 

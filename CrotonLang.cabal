@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 482b66979c5d6dc90e8852599bf1cea68e514a45d069b2cf320e19b5a06a075d
+-- hash: c4f8bff6e9d5b7ac15ebd6e148a2dcde55061d725dc698ab6ad2abcd82f6c5d4
 
 name:           CrotonLang
 version:        0.1.0.0
@@ -29,12 +29,15 @@ library
   exposed-modules:
       ASTree
       Lexer
+      Parser
   other-modules:
       Paths_CrotonLang
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+        base >=4.7 && <5
+      , megaparsec == 8.0.0
+      , text == 1.2.4.0
   default-language: Haskell2010
 
 executable CrotonLang-exe
@@ -47,6 +50,7 @@ executable CrotonLang-exe
   build-depends:
       CrotonLang
     , base >=4.7 && <5
+    , megaparsec == 8.0.0
   default-language: Haskell2010
 
 test-suite CrotonLang-test

@@ -5,15 +5,22 @@
 
 packages:
 - completed:
-    hackage: parsec-3.1.14.0@sha256:9f35f3a6ae66c6e1c22a1b84e62731f1501057791ffb2554f710aa08c7a4d651,4211
+    hackage: megaparsec-8.0.0@sha256:362f85e243ecbcb550e1de6e5c74ba5a50c09edaa1208c99bc5b9fd242227fc6,3808
     pantry-tree:
-      size: 2574
-      sha256: c3bb3df367c625daf464cb8b2393001890311d395213620b977a811ba22d3a26
+      size: 1446
+      sha256: 955117c00a86970f2d0c215f33cf5293b16589c04678a0a790c03368ab6fd0aa
   original:
-    hackage: parsec-3.1.14.0
+    hackage: megaparsec-8.0.0
+- completed:
+    hackage: text-1.2.4.0@sha256:8c24450feb8e3bbb7ea3e17af24ef57e85db077c4bf53e5bcc345b283d1b1d5b,10081
+    pantry-tree:
+      size: 7457
+      sha256: 3437b0a73ce2ae1a81aa8b3438d41a85981c00894cdbee0d6d6d6873046a5d5d
+  original:
+    hackage: text-1.2.4.0
 snapshots:
 - completed:
-    size: 525662
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/15.yaml
-    sha256: c5e673e5723931b64ef2eb5004f6d9ea3c95b58d48388dbc4de6f66b97c81f7a
-  original: lts-14.15
+    size: 524804
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/16.yaml
+    sha256: 4d1519a4372d051d47a5eae2241cf3fb54e113d7475f89707ddb6ec06add2888
+  original: lts-14.16
