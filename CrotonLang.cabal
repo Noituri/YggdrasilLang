@@ -29,7 +29,7 @@ library
   exposed-modules:
       ASTree
       Lexer
-      Parsers
+      Parser
   other-modules:
       Paths_CrotonLang
   hs-source-dirs:

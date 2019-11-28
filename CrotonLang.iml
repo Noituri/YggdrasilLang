@@ -27,6 +27,6 @@
     <orderEntry type="library" name="integer-logarithms-1.0.3" level="project" />
     <orderEntry type="library" name="primitive-0.6.4.0" level="project" />
     <orderEntry type="library" name="megaparsec-8.0.0" level="project" />
-    <orderEntry type="library" name="parser-combinators-1.1.0" level="project" />
+    <orderEntry type="library" name="parser-combinators-1.2.1" level="project" />
   </component>
 </module>

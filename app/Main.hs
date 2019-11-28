@@ -3,7 +3,8 @@
 module Main where
 
 import Lexer
+import Parser
 import Text.Megaparsec
 
 main :: IO ()
-main = parseTest (integerLex <* eof) "123"
+main = parseTest (parseExpr <* eof) "3 * (a + 2)"
