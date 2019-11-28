@@ -5,7 +5,6 @@ module Lexer where
 import Data.Text (Text)
 import Data.Void
 import Text.Megaparsec
-import TEx
 import Text.Megaparsec.Char
 import qualified Text.Megaparsec.Char.Lexer as L
 
@@ -20,11 +19,14 @@ spaceConsumer = L.space
 lexeme :: Parser a -> Parser a
 lexeme = L.lexeme spaceConsumer
 
-integer :: Parser Integer
-integer = lexeme L.decimal
+symbol :: Text -> Parser Text
+symbol = L.symbol spaceConsumer
 
-float :: Parser Double
-float = lexeme L.float
+integerLex :: Parser Integer
+integerLex = lexeme L.decimal
+
+floatLex :: Parser Double
+floatLex = lexeme L.float
 
 -- TODO: Use Megaparsec instead of parsec
 -- lexer :: Tok.TokenParser ()

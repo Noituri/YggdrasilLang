@@ -6,4 +6,4 @@ import Lexer
 import Text.Megaparsec
 
 main :: IO ()
-main = parseTest (integer <* eof) "123"
+main = parseTest (integerLex <* eof) "123"

@@ -12,11 +12,14 @@ data AST
     | Call String [AST]
     | Var Name
     | BinOp Operator AST AST
+    | UnaryOp Operator AST
     deriving (Eq, Ord, Show)
 
 data Operator
-    = Plus
-    | Minus
+    = Sum
+    | Sub
+    | NumNegation
+    | BoolNegation
     | Multiply
     | Divide
     | Square
@@ -26,4 +29,19 @@ data Operator
     | LTE
     | GT
     | LT
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord)
+
+instance Show Operator where
+    show Sum = "+"
+    show Sub = "-"
+    show NumNegation = "-"
+    show BoolNegation = "!"
+    show Multiply = "*"
+    show Divide = "/"
+    show Square = "**"
+    show Equal = "=="
+    show NEqual = "!="
+    show GTE = ">="
+    show LTE = "<="
+    show ASTree.GT = ">"
+    show ASTree.LT = "<"

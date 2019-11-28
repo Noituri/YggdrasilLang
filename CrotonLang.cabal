@@ -29,7 +29,7 @@ library
   exposed-modules:
       ASTree
       Lexer
-      Parser
+      Parsers
   other-modules:
       Paths_CrotonLang
   hs-source-dirs:
@@ -38,6 +38,7 @@ library
         base >=4.7 && <5
       , megaparsec == 8.0.0
       , text == 1.2.4.0
+      , parser-combinators == 1.2.1
   default-language: Haskell2010
 
 executable CrotonLang-exe
@@ -51,6 +52,7 @@ executable CrotonLang-exe
       CrotonLang
     , base >=4.7 && <5
     , megaparsec == 8.0.0
+    , parser-combinators == 1.2.1
   default-language: Haskell2010
 
 test-suite CrotonLang-test
