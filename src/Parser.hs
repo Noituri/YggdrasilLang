@@ -43,7 +43,7 @@ parseExternFunction = do
         args' <- sepBy parseArgs (symbol ",")
         _ <- lexeme $ char ')'
         return args'
-    returnType <- optional . try $ (some alphaNumChar <?> "extern function return type")
+    returnType <- optional . try $ lexeme (some alphaNumChar <?> "extern function return type")
     return $ ExternFunc name args returnType
 
 parseInteger :: Parser AST
