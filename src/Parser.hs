@@ -10,18 +10,19 @@ import Text.Megaparsec.Char
 import qualified Control.Monad.Combinators.Expr as P
 import qualified Text.Megaparsec.Char.Lexer as L
 
+parseArgs :: Parser (Name, Type)
+parseArgs = do
+    argName <- lexeme $ some alphaNumChar
+    argType <- lexeme $ some alphaNumChar
+    return (argName, argType)
+
 parseFunction :: Parser AST
 parseFunction = do
     _ <- lexeme $ string "fc"
     name <- lexeme $ some alphaNumChar
     args <- optional $ do
         _ <- lexeme $ char '('
-
-        args' <- many $ do
-            argName <- lexeme $ some alphaNumChar
-            argType <- lexeme $ some alphaNumChar
-
-            return (argName, argType)
+        args' <- sepBy parseArgs (symbol ",")
         _ <- lexeme $ char ')'
         return args'
 
