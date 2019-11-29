@@ -3,13 +3,15 @@ module ASTree where
 type Name = String
 type Type = String
 type FunctionArgs = Maybe [(Name, Type)]
+type ReturnType = Maybe String
+type FunctionBody = [AST]
 
 data AST
     = Float Double
     | Int Integer
     | String String
     | Bool Bool
-    | Function Name FunctionArgs [AST]
+    | Function Name FunctionArgs ReturnType FunctionBody
     | ExternFunc Name [AST]
     | Call String [AST]
     | Var Name

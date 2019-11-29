@@ -12,21 +12,24 @@ import qualified Text.Megaparsec.Char.Lexer as L
 
 parseArgs :: Parser (Name, Type)
 parseArgs = do
-    argName <- lexeme $ some alphaNumChar
-    argType <- lexeme $ some alphaNumChar
+    argName <- lexeme (some alphaNumChar <?> "arg name")
+    argType <- lexeme (some alphaNumChar <?> "arg type")
     return (argName, argType)
 
 parseFunction :: Parser AST
 parseFunction = do
     _ <- lexeme $ string "fc"
     name <- lexeme $ some alphaNumChar
-    args <- optional $ do
+    args <- optional . try $ do
         _ <- lexeme $ char '('
         args' <- sepBy parseArgs (symbol ",")
         _ <- lexeme $ char ')'
         return args'
-
-    return $ Function name args []
+    returnType <- optional . try $ lexeme (some alphaNumChar <?> "function return type")
+    _ <- lexeme $ char '{'
+    body <- many parseExpr
+    _ <- lexeme $ char '}'
+    return $ Function name args returnType body
 
 parseInteger :: Parser AST
 parseInteger = Int <$> integerLex
