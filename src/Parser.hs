@@ -15,14 +15,14 @@ parseTopLevel = many $ try parseFunction <|> try parseExternFunction
     
 parseArgs :: Parser (Name, Type)
 parseArgs = do
-    argName <- lexeme (some alphaNumChar <?> "arg name")
-    argType <- lexeme (some alphaNumChar <?> "arg type")
+    argName <- identifier <?> "arg name"
+    argType <- identifier <?> "arg type"
     return (argName, argType)
 
 parseFunction :: Parser AST
 parseFunction = do
-    reserve "fc"
-    name <- lexeme $ some alphaNumChar
+    keyword "fc"
+    name <- identifier
     args <- optional . try $ do
         _ <- lexeme $ char '('
         args' <- sepBy parseArgs (symbol ",")
@@ -36,14 +36,14 @@ parseFunction = do
 
 parseExternFunction :: Parser AST
 parseExternFunction = do
-    reserve "@fc"
-    name <- lexeme $ some alphaNumChar
+    keyword "@fc"
+    name <- identifier
     args <- optional . try $ do
         _ <- lexeme $ char '('
         args' <- sepBy parseArgs (symbol ",")
         _ <- lexeme $ char ')'
         return args'
-    returnType <- optional . try $ lexeme (some alphaNumChar <?> "extern function return type")
+    returnType <- optional . try $ (some alphaNumChar <?> "extern function return type")
     return $ ExternFunc name args returnType
 
 parseInteger :: Parser AST

@@ -22,8 +22,14 @@ lexeme = L.lexeme spaceConsumer
 symbol :: Text -> Parser Text
 symbol = L.symbol spaceConsumer
 
-reserve :: Text-> Parser ()
-reserve r = string r *> notFollowedBy alphaNumChar *> spaceConsumer
+keyword :: Text -> Parser ()
+keyword kw = string kw *> notFollowedBy alphaNumChar *> spaceConsumer
+
+reservedKeywords :: [String]
+reservedKeywords =
+    [ "fc"
+    , "@fc"
+    ]
 
 integerLex :: Parser Integer
 integerLex = lexeme L.decimal
@@ -33,3 +39,10 @@ floatLex = lexeme L.float
 
 variableLex :: Parser String
 variableLex = lexeme ((:) <$> letterChar <*> many alphaNumChar <?> "variable")
+
+identifier :: Parser String
+identifier = (lexeme . try ) $ ((:) <$> letterChar <*> many alphaNumChar) >>= isReserved
+    where
+        isReserved w = if w `elem` reservedKeywords
+                       then fail "Keyword can't be used as an identifier"
+                       else return w

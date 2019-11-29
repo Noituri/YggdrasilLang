@@ -1,4 +1,4 @@
-@fc printf(x String, y String) Int
+@fc test(a String) Int
 /*
 fc sum(x Int, y Int) Int {
     x + y
