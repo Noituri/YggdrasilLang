@@ -2,11 +2,30 @@
 
 module Parser where
 
-import Data.Text (Text, pack)
+import Data.Text (Text, pack, unpack)
 import Text.Megaparsec
 import Lexer
 import ASTree
+import Text.Megaparsec.Char
 import qualified Control.Monad.Combinators.Expr as P
+import qualified Text.Megaparsec.Char.Lexer as L
+
+parseFunction :: Parser AST
+parseFunction = do
+    _ <- lexeme $ string "fc"
+    name <- lexeme $ some alphaNumChar
+    args <- optional $ do
+        _ <- lexeme $ char '('
+
+        args' <- many $ do
+            argName <- lexeme $ some alphaNumChar
+            argType <- lexeme $ some alphaNumChar
+
+            return (argName, argType)
+        _ <- lexeme $ char ')'
+        return args'
+
+    return $ Function name args []
 
 parseInteger :: Parser AST
 parseInteger = Int <$> integerLex

@@ -1,14 +1,16 @@
 module ASTree where
 
 type Name = String
+type Type = String
+type FunctionArgs = Maybe [(Name, Type)]
 
 data AST
     = Float Double
     | Int Integer
     | String String
     | Bool Bool
-    | Function String [AST] AST
-    | ExternFunc String [AST]
+    | Function Name FunctionArgs [AST]
+    | ExternFunc Name [AST]
     | Call String [AST]
     | Var Name
     | BinOp Operator AST AST

@@ -7,4 +7,4 @@ import Parser
 import Text.Megaparsec
 
 main :: IO ()
-main = parseTest (parseExpr <* eof) "3 * (a + 2)"
+main = parseTest (parseFunction <* eof) "fc app (num Int, num2 Float)"
