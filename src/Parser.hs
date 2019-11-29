@@ -10,6 +10,9 @@ import Text.Megaparsec.Char
 import qualified Control.Monad.Combinators.Expr as P
 import qualified Text.Megaparsec.Char.Lexer as L
 
+parseTopLevel :: Parser [AST]
+parseTopLevel = many $ try parseFunction <|> try parseExternFunction
+    
 parseArgs :: Parser (Name, Type)
 parseArgs = do
     argName <- lexeme (some alphaNumChar <?> "arg name")

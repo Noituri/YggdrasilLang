@@ -5,6 +5,9 @@ module Main where
 import Lexer
 import Parser
 import Text.Megaparsec
+import Data.Text (pack)
 
 main :: IO ()
-main = parseTest (parseExternFunction <* eof) "@fc app"
+main = do
+    file <- readFile "./app/tests/test1.ct"
+    parseTest (parseTopLevel <* eof) $ pack file
