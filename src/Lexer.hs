@@ -22,6 +22,9 @@ lexeme = L.lexeme spaceConsumer
 symbol :: Text -> Parser Text
 symbol = L.symbol spaceConsumer
 
+reserve :: Text-> Parser ()
+reserve r = string r *> notFollowedBy alphaNumChar *> spaceConsumer
+
 integerLex :: Parser Integer
 integerLex = lexeme L.decimal
 

@@ -21,7 +21,7 @@ parseArgs = do
 
 parseFunction :: Parser AST
 parseFunction = do
-    _ <- lexeme $ string "fc"
+    reserve "fc"
     name <- lexeme $ some alphaNumChar
     args <- optional . try $ do
         _ <- lexeme $ char '('
@@ -36,7 +36,7 @@ parseFunction = do
 
 parseExternFunction :: Parser AST
 parseExternFunction = do
-    _ <- lexeme $ string "@fc"
+    reserve "@fc"
     name <- lexeme $ some alphaNumChar
     args <- optional . try $ do
         _ <- lexeme $ char '('
