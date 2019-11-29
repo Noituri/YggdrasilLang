@@ -12,7 +12,7 @@ data AST
     | String String
     | Bool Bool
     | Function Name FunctionArgs ReturnType FunctionBody
-    | ExternFunc Name [AST]
+    | ExternFunc Name FunctionArgs ReturnType
     | Call String [AST]
     | Var Name
     | BinOp Operator AST AST

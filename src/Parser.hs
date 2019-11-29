@@ -31,6 +31,18 @@ parseFunction = do
     _ <- lexeme $ char '}'
     return $ Function name args returnType body
 
+parseExternFunction :: Parser AST
+parseExternFunction = do
+    _ <- lexeme $ string "@fc"
+    name <- lexeme $ some alphaNumChar
+    args <- optional . try $ do
+        _ <- lexeme $ char '('
+        args' <- sepBy parseArgs (symbol ",")
+        _ <- lexeme $ char ')'
+        return args'
+    returnType <- optional . try $ lexeme (some alphaNumChar <?> "extern function return type")
+    return $ ExternFunc name args returnType
+
 parseInteger :: Parser AST
 parseInteger = Int <$> integerLex
 
