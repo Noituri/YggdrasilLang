@@ -6,11 +6,11 @@ cabal-version: 1.12
 --
 -- hash: c4f8bff6e9d5b7ac15ebd6e148a2dcde55061d725dc698ab6ad2abcd82f6c5d4
 
-name:           CrotonLang
+name:           YggdrasilLang
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/CrotonLang#readme>
-homepage:       https://github.com/github.com/noituri#readme
-bug-reports:    https://github.com/github.com/noituri/issues
+description:    Simple Programming Language
+homepage:       https://github.com/github.com/noituri/YggdrasilLang/#readme
+bug-reports:    https://github.com/github.com/noituri/YggdrasilLang/issues
 author:         Mikolaj Radkowski
 maintainer:     yknomeh@protonmail.com
 copyright:      2019 Mikolaj Radkowski
@@ -31,7 +31,7 @@ library
       Lexer
       Parser
   other-modules:
-      Paths_CrotonLang
+      Paths_YggdrasilLang
   hs-source-dirs:
       src
   build-depends:
@@ -41,30 +41,30 @@ library
       , parser-combinators == 1.2.1
   default-language: Haskell2010
 
-executable CrotonLang-exe
+executable Yggdrasil-exe
   main-is: Main.hs
   other-modules:
-      Paths_CrotonLang
+      Paths_YggdrasilLang
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      CrotonLang
+      YggdrasilLang
     , base >=4.7 && <5
     , megaparsec == 8.0.0
     , parser-combinators == 1.2.1
     , text == 1.2.4.0
   default-language: Haskell2010
 
-test-suite CrotonLang-test
+test-suite Yggdrasil-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_CrotonLang
+      Paths_YggdrasilLang
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      CrotonLang
+      YggdrasilLang
     , base >=4.7 && <5
   default-language: Haskell2010

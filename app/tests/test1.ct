@@ -1,4 +1,4 @@
-@fc test(a String) Int
+@fc test(val String) Int
 /*
 fc sum(x Int, y Int) Int {
     x + y
