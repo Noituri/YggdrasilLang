@@ -6,4 +6,5 @@ fc sum(x Int, y Int) Int {
 }
 */
 fc main {
+    true
 }

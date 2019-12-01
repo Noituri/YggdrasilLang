@@ -23,7 +23,7 @@ symbol :: Text -> Parser Text
 symbol = L.symbol spaceConsumer
 
 keyword :: Text -> Parser ()
-keyword kw = string kw *> notFollowedBy alphaNumChar *> spaceConsumer
+keyword kw = spaceConsumer *> string kw *> notFollowedBy alphaNumChar *> spaceConsumer
 
 reservedKeywords :: [String]
 reservedKeywords =
