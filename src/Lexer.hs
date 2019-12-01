@@ -29,6 +29,8 @@ reservedKeywords :: [String]
 reservedKeywords =
     [ "fc"
     , "@fc"
+    , "true"
+    , "false"
     ]
 
 integerLex :: Parser Integer
@@ -36,6 +38,17 @@ integerLex = lexeme L.decimal
 
 floatLex :: Parser Double
 floatLex = lexeme L.float
+
+stringLex :: Parser String
+stringLex = lexeme $ char '\"' *> manyTill L.charLiteral (lexeme $ char '\"')
+
+boolLex :: Parser Bool
+boolLex = (string "true" <|> string "false") >>= boolChecker
+  where
+    boolChecker x =
+        if x == "true"
+            then return True
+            else return False
 
 identifier :: Parser String
 identifier = (lexeme . try ) $ ((:) <$> letterChar <*> many alphaNumChar) >>= isReserved

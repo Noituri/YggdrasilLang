@@ -60,18 +60,27 @@ parseInteger = Int <$> integerLex
 parseFloat :: Parser AST
 parseFloat = Float <$> floatLex
 
+parseString :: Parser AST
+parseString = ASTree.String <$> stringLex <?> "string"
+
+parseBool :: Parser AST
+parseBool = ASTree.Bool <$> boolLex <?> "bool"
+
 parseVariable :: Parser AST
 parseVariable = ASTree.Var <$> identifier <?> "variable"
 
 parseParens :: Parser a -> Parser a
-parseParens = between (symbol "(") (symbol")")
+parseParens = between (symbol "(") (symbol ")")
 
 parseTerm :: Parser AST
 parseTerm = choice
   [ parseParens parseExpr
   , try parseCall
+  , try parseBool
   , try parseVariable
+  , try parseFloat
   , try parseInteger
+  , try parseString
   ]
 
 parseExpr :: Parser AST

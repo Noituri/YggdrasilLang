@@ -1,10 +1,9 @@
+/*
 @fc test(val Int) Int
 
 fc sum(x Int, y Int) Int {
     x + y
 }
-
+*/
 fc main {
-    2 + 1
-    sum(1,test(10))
 }
