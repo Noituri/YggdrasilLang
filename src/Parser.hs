@@ -69,9 +69,9 @@ parseParens = between (symbol "(") (symbol")")
 parseTerm :: Parser AST
 parseTerm = choice
   [ parseParens parseExpr
-  , parseCall
-  , parseVariable
-  , parseInteger
+  , try parseCall
+  , try parseVariable
+  , try parseInteger
   ]
 
 parseExpr :: Parser AST
