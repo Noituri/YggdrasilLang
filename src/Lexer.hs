@@ -43,7 +43,7 @@ stringLex :: Parser String
 stringLex = lexeme $ char '\"' *> manyTill L.charLiteral (lexeme $ char '\"')
 
 boolLex :: Parser Bool
-boolLex = (string "true" <|> string "false") >>= boolChecker
+boolLex = lexeme $ (string "true" <|> string "false") >>= boolChecker
   where
     boolChecker x =
         if x == "true"

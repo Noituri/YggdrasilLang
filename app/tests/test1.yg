@@ -5,6 +5,10 @@ fc sum(x Int, y Int) Int {
     x + y
 }
 */
+
 fc main {
+    // test comment
+    simple(a, "test", 123, 1.0)
     true
+    false
 }
