@@ -1,0 +1,10 @@
+@fc test(val String) Int
+/*
+fc sum(x Int, y Int) Int {
+    x + y
+}
+
+fc main {
+    2 + 1
+}
+*/
