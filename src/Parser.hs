@@ -46,6 +46,14 @@ parseExternFunction = do
     returnType <- optional . try $ lexeme (some alphaNumChar <?> "extern function return type")
     return $ ExternFunc name args returnType
 
+parseCall :: Parser AST
+parseCall = do
+    name <- identifier <?> "function call name"
+    _ <- lexeme $ char '('
+    args <- sepBy parseExpr (symbol ",")
+    _ <- lexeme $ char ')'
+    return $ Call name args
+
 parseInteger :: Parser AST
 parseInteger = Int <$> integerLex
 
@@ -53,7 +61,7 @@ parseFloat :: Parser AST
 parseFloat = Float <$> floatLex
 
 parseVariable :: Parser AST
-parseVariable = ASTree.Var <$> variableLex
+parseVariable = ASTree.Var <$> identifier <?> "variable"
 
 parseParens :: Parser a -> Parser a
 parseParens = between (symbol "(") (symbol")")
@@ -61,6 +69,7 @@ parseParens = between (symbol "(") (symbol")")
 parseTerm :: Parser AST
 parseTerm = choice
   [ parseParens parseExpr
+  , parseCall
   , parseVariable
   , parseInteger
   ]

@@ -37,11 +37,10 @@ integerLex = lexeme L.decimal
 floatLex :: Parser Double
 floatLex = lexeme L.float
 
-variableLex :: Parser String
-variableLex = lexeme ((:) <$> letterChar <*> many alphaNumChar <?> "variable")
+identifier = lexeme $ some alphaNumChar
 
-identifier :: Parser String
-identifier = (lexeme . try ) $ ((:) <$> letterChar <*> many alphaNumChar) >>= isReserved
+identifier2 :: Parser String
+identifier2 = (lexeme . try ) $ ((:) <$> letterChar <*> many alphaNumChar) >>= isReserved
     where
         isReserved w = if w `elem` reservedKeywords
                        then fail "Keyword can't be used as an identifier"
