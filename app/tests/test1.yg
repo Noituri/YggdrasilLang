@@ -8,7 +8,6 @@ fc sum(x Int, y Int) Int {
 
 fc main {
     // test comment
-    simple(a, "test", 123, 1.0)
-    true
-    false
+    test("")
+    true false
 }

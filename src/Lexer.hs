@@ -42,13 +42,18 @@ floatLex = lexeme L.float
 stringLex :: Parser String
 stringLex = lexeme $ char '\"' *> manyTill L.charLiteral (lexeme $ char '\"')
 
+trueLex :: Parser Bool
+trueLex = do
+    keyword "true"
+    return True
+
+falseLex :: Parser Bool
+falseLex = do 
+    keyword "false"
+    return False
+
 boolLex :: Parser Bool
-boolLex = lexeme $ (string "true" <|> string "false") >>= boolChecker
-  where
-    boolChecker x =
-        if x == "true"
-            then return True
-            else return False
+boolLex = try trueLex <|> try falseLex
 
 identifier :: Parser String
 identifier = (lexeme . try ) $ ((:) <$> letterChar <*> many alphaNumChar) >>= isReserved
