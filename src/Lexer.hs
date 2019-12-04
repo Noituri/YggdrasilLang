@@ -2,11 +2,12 @@
 
 module Lexer where
 
-import Data.Text (Text)
+import Data.Text (Text, unpack)
 import Data.Void
 import Text.Megaparsec
 import Text.Megaparsec.Char
 import qualified Text.Megaparsec.Char.Lexer as L
+import qualified Syntax as S
 
 type Parser = Parsec Void Text
 
@@ -27,10 +28,10 @@ keyword kw = spaceConsumer *> string kw *> notFollowedBy alphaNumChar *> spaceCo
 
 reservedKeywords :: [String]
 reservedKeywords =
-    [ "fc"
-    , "@fc"
-    , "true"
-    , "false"
+    [ unpack S.function
+    , unpack S.externFunction
+    , unpack S.true
+    , unpack S.false
     ]
 
 integerLex :: Parser Integer
@@ -44,12 +45,12 @@ stringLex = lexeme $ char '\"' *> manyTill L.charLiteral (lexeme $ char '\"')
 
 trueLex :: Parser Bool
 trueLex = do
-    keyword "true"
+    keyword S.true
     return True
 
 falseLex :: Parser Bool
 falseLex = do 
-    keyword "false"
+    keyword S.false
     return False
 
 boolLex :: Parser Bool

@@ -23,13 +23,14 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/github.com/noituri
+  location: https://github.com/github.com/noituri/YggdrasilLang
 
 library
   exposed-modules:
       ASTree
       Lexer
       Parser
+      Syntax
   other-modules:
       Paths_YggdrasilLang
   hs-source-dirs:

@@ -1,6 +1,6 @@
 name:                YggdrasilLang
 version:             0.1.0.0
-github:              "github.com/noituri"
+github:              "github.com/noituri/YggdrasilLang"
 license:             MIT
 author:              "Mikolaj Radkowski"
 maintainer:          "yknomeh@protonmail.com"

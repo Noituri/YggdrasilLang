@@ -9,6 +9,7 @@ import ASTree
 import Text.Megaparsec.Char
 import qualified Control.Monad.Combinators.Expr as P
 import qualified Text.Megaparsec.Char.Lexer as L
+import qualified Syntax as S
 
 parseTopLevel :: Parser [AST]
 parseTopLevel = many $ try parseFunction <|> try parseExternFunction
@@ -21,7 +22,7 @@ parseArgs = do
 
 parseFunction :: Parser AST
 parseFunction = do
-    keyword "fc"
+    keyword S.function
     name <- identifier
     args <- optional . try $ do
         _ <- lexeme $ char '('
@@ -36,7 +37,7 @@ parseFunction = do
 
 parseExternFunction :: Parser AST
 parseExternFunction = do
-    keyword "@fc"
+    keyword S.externFunction
     name <- identifier
     args <- optional . try $ do
         _ <- lexeme $ char '('
