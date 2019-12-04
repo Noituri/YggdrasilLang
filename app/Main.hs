@@ -14,4 +14,4 @@ main = do
     putStrLn $ "Yggdrasil - v" ++ showVersion version
     file <- readFile "./app/tests/test1.yg"
     putStrLn "Output of the parser:"
-    parseTest (parseFunction <* eof) $ pack file
+    parseTest (parseTopLevel <* eof) $ pack file
