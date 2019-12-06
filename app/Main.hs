@@ -11,6 +11,7 @@ import Data.Version (showVersion)
 
 main :: IO ()
 main = do
+    -- TODO add cli
     putStrLn $ "Yggdrasil - v" ++ showVersion version
     file <- readFile "./app/tests/test1.yg"
     putStrLn "Output of the parser:"

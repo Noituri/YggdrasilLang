@@ -40,6 +40,10 @@ library
       , megaparsec == 8.0.0
       , text == 1.2.4.0
       , parser-combinators == 1.2.1
+      , llvm-hs-pure == 9.0.0
+      , llvm-hs == 9.0.0
+      , llvm-hs-pretty == 0.6.2.0
+      , cli == 0.2.0
   default-language: Haskell2010
 
 executable Yggdrasil-exe
@@ -55,6 +59,10 @@ executable Yggdrasil-exe
     , megaparsec == 8.0.0
     , parser-combinators == 1.2.1
     , text == 1.2.4.0
+    , llvm-hs-pure == 9.0.0
+    , llvm-hs == 9.0.0
+    , llvm-hs-pretty == 0.6.2.0
+    , cli == 0.2.0
   default-language: Haskell2010
 
 test-suite Yggdrasil-test
