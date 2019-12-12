@@ -31,6 +31,7 @@ library
       Lexer
       Parser
       Syntax
+      Codegen
   other-modules:
       Paths_YggdrasilLang
   hs-source-dirs:
@@ -44,6 +45,8 @@ library
       , llvm-hs == 9.0.0
       , llvm-hs-pretty == 0.6.2.0
       , cli == 0.2.0
+      , containers == 0.6.0.1
+      , mtl == 2.2.2
   default-language: Haskell2010
 
 executable Yggdrasil-exe
@@ -63,6 +66,8 @@ executable Yggdrasil-exe
     , llvm-hs == 9.0.0
     , llvm-hs-pretty == 0.6.2.0
     , cli == 0.2.0
+    , containers == 0.6.0.1
+    , mtl == 2.2.2
   default-language: Haskell2010
 
 test-suite Yggdrasil-test

@@ -4,6 +4,7 @@ module Main where
 
 import Lexer
 import Parser
+import Codegen
 import Text.Megaparsec
 import Data.Text (pack)
 import Paths_YggdrasilLang (version)
